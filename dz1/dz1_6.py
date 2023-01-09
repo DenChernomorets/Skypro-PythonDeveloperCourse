@@ -54,5 +54,6 @@ def main():
     percentage_of_completion = round((right_answers / len(tasks)) * 100, 1)
     print('Вот и все! Вы ответили на {} вопросов из {} верно, это {}%.'.format(right_answers, len(tasks), percentage_of_completion))
 
+
 if __name__ == '__main__':
     main()
