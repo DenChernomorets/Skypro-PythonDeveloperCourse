@@ -1,7 +1,6 @@
 '''
 тут будет описание задачи
 через .title()
-test git
 '''
 import random
 
