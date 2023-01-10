@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /Skypro-PythonDeveloperCourse
+git remote set-url origin git@github.com:DenChernomorets/Skypro-PythonDeveloperCourse.git
+git fetch
+git merge origin/HEAD origin/master
+
+echo "Dowloaded changes from github.com."
+echo "Let's code!"
