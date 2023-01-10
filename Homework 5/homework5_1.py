@@ -1,5 +1,8 @@
+'''
+тут будет описание задачи
+через .title()
+'''
 import random
-
 
 morse_codes = {"0": "-----",
                "1": ".----",
@@ -54,20 +57,6 @@ english_words = ['let', 'thought', 'city', 'tree', 'cross',
                  'night', 'real', 'life', 'few', 'north']
 
 
-def print_statistics(user_answers):
-    correct_ans, incorrect_ans = 0, 0
-    for ans in user_answers:
-        if ans:
-            correct_ans += 1
-        else:
-            incorrect_ans += 1
-    print('''
-    Всего задачек: {}
-    Отвечено верно: {}
-    Отвечено неверно: {}
-    '''.format(len(user_answers), correct_ans, incorrect_ans))
-
-
 def morse_encode(word, morse_letters=None):
     if morse_letters is None:
         morse_letters = morse_codes
@@ -89,9 +78,37 @@ def welcome_message():
     input('Нажмите Enter, чтобы начать.')
 
 
+def answer(english_word, user_answers, num_of_question):
+    encoded_word = morse_encode(english_word.lower())
+    ans = input('Слово {} - {}'.format(num_of_question, encoded_word))
+    if ans.lower() == english_word.lower():
+        print('Верно, {}!'.format(english_word))
+        return user_answers.append(True)
+    else:
+        print('Неверно, {}'.format(english_word))
+        return user_answers.append(False)
+
+
+def print_statistics(user_answers):
+    correct_ans, incorrect_ans = 0, 0
+    for ans in user_answers:
+        if ans:
+            correct_ans += 1
+        else:
+            incorrect_ans += 1
+    print('''
+    Всего задачек: {}
+    Отвечено верно: {}
+    Отвечено неверно: {}
+    '''.format(len(user_answers), correct_ans, incorrect_ans))
+
+
 def main():
     welcome_message()
     answers = []
+    for question in range(5):
+        answer(get_word(), answers, question)
+    print_statistics(answers)
 
 
 if __name__ == '__main__':
