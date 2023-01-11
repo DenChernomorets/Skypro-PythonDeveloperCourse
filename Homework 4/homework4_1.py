@@ -1,26 +1,32 @@
 '''
-тут будет описание задачи
-через .title()
+Приложение хранит русские и анлийские слова и предалагет нам угадывать.
+Чтобы нам было проще, програма выдает подсказки с длиной слова и первой буквой.
+
+Основные объекты.
+eazy, medium, hard - словари формата {'слово' : 'перевод'}
+words - словарь формата {'слово' : 'перевод'}
+levels - ранги пользователя в зависимости от успехов
+answers - словарь с записями о верных и неверных ответах
 '''
 
 
-easy_level_words = {'cat': 'кошка',
-                    'dog': 'собака',
-                    'house': 'дом',
-                    'girl': 'девочка',
-                    'mother': 'мать'}
+easy = {'cat': 'кошка',
+        'dog': 'собака',
+        'house': 'дом',
+        'girl': 'девочка',
+        'mother': 'мать'}
 
-medium_level_words = {'table': 'стол',
-                      'doctor': 'доктор',
-                      'phone': 'телефон',
-                      'finger': 'палец',
-                      'work': 'работа'}
+medium = {'table': 'стол',
+          'doctor': 'доктор',
+          'phone': 'телефон',
+          'finger': 'палец',
+          'work': 'работа'}
 
-hard_level_words = {'microphone': 'микрофон',
-                    'glass': 'стекло',
-                    'monitor': 'монитор',
-                    'problem': 'проблема',
-                    'folder': 'папка'}
+hard = {'microphone': 'микрофон',
+        'glass': 'стекло',
+        'monitor': 'монитор',
+        'problem': 'проблема',
+        'folder': 'папка'}
 
 levels = {0: 'Нулевой',
           1: 'Так себе',
@@ -37,22 +43,24 @@ def get_complexity():
             print('Выбран уровень сложности {}. Мы предложим 5 слов, подберите перевод.'.format(user_choice))
             break
     if user_choice == 'легкий':
-        return easy_level_words
+        return easy
     elif user_choice == 'средний':
-        return medium_level_words
+        return medium
     else:
-        return hard_level_words
+        return hard
 
 
 def answer(words_dict, answers_dict):
     for word in words_dict:
-        user_answer = input('{}, {} букв, начинается на {}\n'.format(word, len(words_dict[word]), words_dict[word][0]))
+        user_answer = input('{}, {} букв, начинается на {}\n'.format(word.title(),
+                                                                     len(words_dict[word]),
+                                                                     words_dict[word][0]))
         if user_answer.lower() == words_dict[word]:
             answers_dict[user_answer] = True
-            print('Верно. {} это {}.'.format(word, words_dict[word]))
+            print('Верно. {} это {}.'.format(word.title(), words_dict[word]))
         else:
             answers_dict[user_answer] = False
-            print('Неверно. {} это {}.'.format(word, words_dict[word]))
+            print('Неверно. {} это {}.'.format(word.title(), words_dict[word]))
     return answers_dict
 
 
