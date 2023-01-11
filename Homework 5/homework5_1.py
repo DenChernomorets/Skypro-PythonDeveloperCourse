@@ -1,6 +1,21 @@
 '''
-тут будет описание задачи
-через .title() ----
+Мы будем создавать программу, которая, на этот раз,
+помогает изучать коды азбуки Морзе.
+Для этого наша программа будет конвертировать строки в морзе-код,
+а затем проверять ответы пользователя.
+Все это с помощью функций.
+Составьте список английских слов и фраз, которые будете расшифровывать.
+Напишите функцию morse_encode(sentence), которая переводит фразы на
+английском языке в последовательность точек и тире.
+Напишите функцию get_word(), которая полочует случайное слово из списка.
+Создайте в начале программы список answers = []
+Напишите функцию print_statistics(), которая на основе
+списка answers типа [True, True, False, True] выводит статистику типа
+    Всего задачек: 5
+    Отвечено верно: 3
+    Отвечено неверно: 2
+При старте программы вывидите приветсвенную информацию.
+>>>>>>> origin/HEAD
 '''
 import random
 
@@ -50,8 +65,8 @@ morse_codes = {"0": "-----",
                "(": "-.--.",
                ")": "-.--.-"}
 
-english_words = ['let', 'thought', 'city', 'tree', 'cross',
-                 'farm', 'hard', 'might', 'story', 'saw',
+english_words = ['let', 'thought', 'city', 'lemon tree', 'cross',
+                 'farm', 'hard tasks', 'might', 'story of Alisher', 'saw',
                  'far', 'sea', 'draw', 'left', 'late',
                  'run', 'sun', 'while', 'press', 'close',
                  'night', 'real', 'life', 'few', 'north']
@@ -79,13 +94,13 @@ def welcome_message():
 
 
 def answer(english_word, user_answers, num_of_question):
-    encoded_word = morse_encode(english_word.lower())
+    encoded_word = morse_encode(english_word)
     ans = input('Слово {} - {}'.format(num_of_question, encoded_word))
-    if ans.lower() == english_word.lower():
-        print('Верно, {}!'.format(english_word))
+    if ans == english_word():
+        print('Верно, {}!'.format(english_word.title()))
         return user_answers.append(True)
     else:
-        print('Неверно, {}'.format(english_word))
+        print('Неверно, {}'.format(english_word).title())
         return user_answers.append(False)
 
 
