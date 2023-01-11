@@ -16,9 +16,11 @@ check_name() - проверяет содержание в имени тольк�
 
 '''
 
+import re
+
 def check_pin(user_pin):
     try:
-        if int(user_pin) > 999 & int(user_pin) < 10000:
+        if int(user_pin) > 999 and int(user_pin) < 10000 and str(user_pin) == user_pin:
             if user_pin[0] != user_pin[1]:
                 if int(user_pin) != 1234:
                     return True
@@ -26,14 +28,23 @@ def check_pin(user_pin):
         return False
     return False
 
-def check_pass(user_pass):
+def check_pin_regular(user_pin):
+    regular_pin = r'((\d)(?=.\d\1)|(\d)(?<=\2.\d.)' #(?!1111) \b\d{4}\b
+    if re.match(regular_pin, user_pin):
+        return True
+    else:
+        return False
 
-def check_mail(user_mail):
+#def check_pass(user_pass):
 
-def check_name(user_name):
+#def check_mail(user_mail):
+
+#def check_name(user_name):
 
 
 def main():
+    while True:
+        print(check_pin_regular(input()))
 
 
 if __name__ == '__main__':
