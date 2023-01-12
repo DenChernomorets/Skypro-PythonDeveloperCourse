@@ -16,6 +16,7 @@ def get_errors(*errors):
 
 
 def draw_carpet(weigh, height):
+# line * height name roof == border line level = middle line
     left_wall = '░▒'
     right_wall = '▒░'
     roof = left_wall + (weigh-4)*'▒' + right_wall
