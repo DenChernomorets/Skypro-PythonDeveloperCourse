@@ -1,23 +1,16 @@
+import pytest
+import
+#import check_pin, check_mail, check_name, check_pass
+from test_data import *
 
-from validators import check_pin, check_mail, check_name, check_pass
 
-def test_check_pin():
+@pytest.mark.parametrize('pin_code, expected_result', get_test_data_pins_evil())
+def test_check_pin(pin_code, expected_result):
     '''
     False tests
     '''
-    assert check_pin('1234') == False
-    assert check_pin('1111') == False
-    assert check_pin('qwe') == False
-    assert check_pin('112') == False
-    assert check_pin('') == False
-    assert check_pin('00001') == False
-    assert check_pin('-123') == False
-    '''
-    True tsts
-    '''
-    assert check_pin('3332') == True
-    assert check_pin('1100') == True
-    assert check_pin('8954') == True
+    assert check_pin(pin_code) == expected_result
+
 
 def test_check_mail():
     '''
