@@ -6,14 +6,18 @@ def check_pass(user_pass):
     check_pass() - проверяет, чтобы пароль был не меньше 9 символов,
     содержал буквы и цифры
     """
-    pass
+    user_pass_regular = r'(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{9,}'
+    if re.match(user_pass_regular, user_pass):
+        return True
+    else:
+        return False
 
 
 def check_mail(user_mail):
     """
     check_mail() - проверяет наличие собаки и точки
     """
-    user_mail_regular = r'[a-zA-Z]*^[_=-)(!@#$%^&*"\"{}\":\']'
+    user_mail_regular = r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
     if re.match(user_mail_regular, user_mail):
         return True
     else:
@@ -24,7 +28,7 @@ def check_name(user_name):
     """
     check_name() - проверяет содержание в имени только русских букв и пробелов.
     """
-    user_name_regular = r'^[ а-яА-Я ]*$'
+    user_name_regular = r'^[ а-яА-Я ]+$'
     if re.match(user_name_regular, user_name):
         return True
     else:
@@ -48,8 +52,10 @@ def check_pin(user_pin):
 
 
 def main():
-    while True:
-        print(check_pin(input()))
+    print(check_pin(input()))
+    print(check_mail(input()))
+    print(check_pass(input()))
+    print(check_name(input()))
 
 
 if __name__ == '__main__':

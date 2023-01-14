@@ -1,6 +1,6 @@
 import pytest
 from homework_6.validators import check_pin, check_name, check_mail, check_pass
-from homework_6.tests.test_data import *
+from tests.test_data import *
 
 
 @pytest.mark.parametrize('pin_code, expected_result', get_test_data_pins_evil())
@@ -44,7 +44,7 @@ def test_check_name_evil(name, expected_result):
 
 
 @pytest.mark.parametrize('name, expected_result', get_test_data_names_good())
-def test_check_name_evil(name, expected_result):
+def test_check_name_good(name, expected_result):
     """
     Tests with expected result True for validators.check_name
     """
