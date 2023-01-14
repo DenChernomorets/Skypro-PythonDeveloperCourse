@@ -1,7 +1,10 @@
 /.idea/
 /.pytest_cache/
 /__pycache__/
+/.DS_Store
 # ignore all logs
 *.log
+gitscripts
 /tests/.pytest_cache/
 /tests/__pycache__/
+tests/.DS_Store
