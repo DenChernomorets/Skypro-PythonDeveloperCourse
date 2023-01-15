@@ -17,19 +17,14 @@ def get_errors(*errors):
 
 def draw_carpet(weigh, height):
 # line * height name roof == border line level = middle line
-    left_wall = '░▒'
-    right_wall = '▒░'
-    roof = left_wall + (weigh-4)*'▒' + right_wall
-    level = left_wall + (weigh-4)*'▓' + right_wall
+    border_line = '░▒' + (weigh-4)*'▒' + '▒░'
+    middle_line = ' ░▒' + (weigh-4)*'▓' + '▒░'
 
-    print(roof)
-    for i in range(height-2):
-        print(level)
-    print(roof)
+    print(border_line + '\n', (middle_line + '\n')*height, border_line)
 
 
 def main():
-    draw_carpet(10, 10)
+    draw_carpet(10, 15)
 
 
 if __name__ == '__main__':
